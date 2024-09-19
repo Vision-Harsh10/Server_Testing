@@ -2,8 +2,10 @@ const express = require('express');
 const app = express();
 const Database = require('./Database.js'); 
 const menu = require('./Models/menu.js'); 
-
-app.use(express.json()); // Express has in-built support for JSON parsing
+require('dotenv').config();
+ 
+app.use(express.json());
+const PORT = process.env.PORT || 3000; // Express has in-built support for JSON parsing
 
 app.get('/Life', (req, res) => {
   res.send('Yes, I am always here for you.');
@@ -14,7 +16,9 @@ const Personroutes = require('./routes/Personroutes');
 // Use the routers
 app.use('/person', Personroutes);
 
-app.listen(3000, () => {
+
+
+app.listen(PORT, () => {
   console.log('Server is listening on port 3000');
 });
 
